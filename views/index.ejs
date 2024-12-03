@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('test.ejs') %>
+    <h3>Items</h3>
+        <script>console.log(items); </script>
+        <% if(items) { %>
+       
+        <% items.forEach(item => { %>
+            <ul>
+                <li><%- item.name %></li>
+                <li><%- item.category %></li>
+                <li><%- item.quantity %></li>
+                <li><%- item.price %></li>
+                <li><%- item.description %></li>
+            </ul>
+        <% }) %>
+        <%  } else { %>
+            <h3>no items found!</h3>
+        <%  } %>
+   
+    <h2>Create Item</h2>
+    <form action="/items/create" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="category" placeholder="Category" required>
+        <input type="number" name="quantity" placeholder="Quantity" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
