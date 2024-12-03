@@ -1,10 +1,13 @@
 const Items = require('../models/itemModels');
+const moment = require('moment');
 
 exports.getAllItems = async (req, res) => {
     try {
         const items = await Items.find();
-        res.render('index', { items });
+       
+        res.render('index', { items, moment });
     } catch (error) {
+        console.log("error getting all items");
         res.json({ error: error});
     }
 };
@@ -15,9 +18,62 @@ exports.createItem = async (req, res) => {
         const { name, category, quantity, price, description } = req.body;
         const item = new Items({ name, category, quantity, price, description });
         await item.save();
-        res.redirect('/items');
+        res.redirect('/items?success=Item created successfully!');
+            // .json({ message: "Item Created Successfully", item });
     } catch (err) {
         console.log("error to");
         res.status(400).json({ error: err.message });
     }
 };
+
+exports.updateItem = async (req, res) => {
+    try {
+        console.log(req.params.id);
+        const id = req.params.id;
+        const { name, category, quantity, price, description } = req.body;
+        const updateItem = await Items.findByIdAndUpdate(
+            id,
+            { name, category, quantity, price, description },
+            { new: true, runValidators: true }
+        );
+
+        if (!updateItem) {
+            return res.status(404).json({ message: 'Item not found', type: 'danger' });
+        } 
+
+        res.redirect('/items?success=Item updated successfully!');
+        // res.redirect(`/items?success=Item created successfully&name=${encodeURIComponent(item)}`); 
+            // .json({ message: "Item Created Successfully", item });
+    } catch (err) {
+        console.log("error to");
+        res.status(400).json({ error: err.message });
+    }
+};
+
+exports.deleteItem = async (req, res) => {
+    
+    
+    try {
+            console.log(req.params.id);
+            const id = req.params.id;
+    
+    
+            const deleteItem = await Items.findByIdAndDelete(id);
+
+            if (!deleteItem) {
+                return res.status(404).json({ message: 'Item not found' });
+            }
+
+            res.redirect('/items?success=Item deleted successfully!');
+        
+
+        
+        // res.redirect(`/items?success=Item created successfully&name=${encodeURIComponent(item)}`); 
+            // .json({ message: "Item Created Successfully", item });
+    } catch (err) {
+        console.log("error to");
+        res.status(400).json({ error: err.message });
+    }
+
+};
+

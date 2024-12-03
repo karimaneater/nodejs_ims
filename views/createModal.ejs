@@ -1,0 +1,38 @@
+<!-- Modal -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Item</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <div class="modal-body">
+                <form action="/items/create" method="POST">
+                    <div class="mb-3 form-floating">
+                    <input type="text" class="form-control" id="Name" placeholder="Name" name="name" required>
+                    <label for="Name">Name</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="Category" placeholder="Category" name="category" required>
+                        <label for="Category">Category</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="number" class="form-control" id="Quantity" placeholder="Quantity" name="quantity">
+                        <label for="Quantity">Quantity</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="number" class="form-control" id="Price" placeholder="Price" name="price" required>
+                        <label for="Price">Price</label>
+                    </div>
+                    <div class="mb-3 form-floating">
+                        <input type="text" class="form-control" id="Description" placeholder="Description" name="description">
+                        <label for="Description">Description</label>
+                    </div>
+            </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    </div>
+                </form>
+      </div>
+    </div>
+  </div>
