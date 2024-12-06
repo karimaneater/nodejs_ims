@@ -19,7 +19,7 @@ exports.createItem = async (req, res) => {
         const item = new Items({ name, category, quantity, price, description });
         await item.save();
         res.redirect('/items?success=Item created successfully!');
-            // .json({ message: "Item Created Successfully", item });
+           
     } catch (err) {
         console.log("error to");
         res.status(400).json({ error: err.message });
@@ -42,8 +42,7 @@ exports.updateItem = async (req, res) => {
         } 
 
         res.redirect('/items?success=Item updated successfully!');
-        // res.redirect(`/items?success=Item created successfully&name=${encodeURIComponent(item)}`); 
-            // .json({ message: "Item Created Successfully", item });
+        
     } catch (err) {
         console.log("error to");
         res.status(400).json({ error: err.message });
@@ -52,28 +51,22 @@ exports.updateItem = async (req, res) => {
 
 exports.deleteItem = async (req, res) => {
     
-    
     try {
-            console.log(req.params.id);
-            const id = req.params.id;
-    
-    
-            const deleteItem = await Items.findByIdAndDelete(id);
+        console.log(req.params.id);
+        const id = req.params.id;
 
-            if (!deleteItem) {
-                return res.status(404).json({ message: 'Item not found' });
-            }
 
-            res.redirect('/items?success=Item deleted successfully!');
+        const deleteItem = await Items.findByIdAndDelete(id);
+
+        if (!deleteItem) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+
+        res.redirect('/items?success=Item deleted successfully!');
         
-
-        
-        // res.redirect(`/items?success=Item created successfully&name=${encodeURIComponent(item)}`); 
-            // .json({ message: "Item Created Successfully", item });
     } catch (err) {
         console.log("error to");
         res.status(400).json({ error: err.message });
     }
-
 };
 
