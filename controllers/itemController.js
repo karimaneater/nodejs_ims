@@ -6,9 +6,9 @@ exports.getAllItems = async (req, res) => {
         const items = await Items.find();
        
         res.render('index', { items, moment });
-    } catch (error) {
+    } catch (err) {
         console.log("error getting all items");
-        res.json({ error: error});
+        res.status(400).json({ error: err.message});
     }
 };
 
@@ -44,7 +44,6 @@ exports.updateItem = async (req, res) => {
         res.redirect('/items?success=Item updated successfully!');
         
     } catch (err) {
-        console.log("error to");
         res.status(400).json({ error: err.message });
     }
 };
@@ -65,7 +64,6 @@ exports.deleteItem = async (req, res) => {
         res.redirect('/items?success=Item deleted successfully!');
         
     } catch (err) {
-        console.log("error to");
         res.status(400).json({ error: err.message });
     }
 };

@@ -9,9 +9,9 @@ router.get('/', itemController.getAllItems);
 router.post('/create', itemController.createItem);
 
 // Route to update an item
-router.post('/:id', itemController.updateItem);
+router.put('/:id', itemController.updateItem);
 
 // Route to delete an item
-router.get('/:id', itemController.deleteItem);
+router.delete('/:id', itemController.deleteItem);
 
 module.exports = router;
