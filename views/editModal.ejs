@@ -6,7 +6,7 @@
         <h1 class="modal-title fs-5" id="exampleModalLabel">Add Item</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-            <form action="/items/<%- item.id %>?_method=PUT" method="POST"></form>
+            <form action="/items/<%- item.id %>?_method=PUT" method="POST">
                 <div class="modal-body">
                     <div class="mb-3 form-floating">
                     <input type="text" class="form-control" id="Name-<%- item.id %>" placeholder="Name" value="<%- item.name %>" name="name" required>
