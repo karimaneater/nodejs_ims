@@ -6,8 +6,8 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">Add Item</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-            <div class="modal-body">
-                <form action="/items/create" method="POST">
+            <form action="/items/create" method="POST"></form>
+                <div class="modal-body">
                     <div class="mb-3 form-floating">
                     <input type="text" class="form-control" id="Name" placeholder="Name" name="name" required>
                     <label for="Name">Name</label>
@@ -28,11 +28,11 @@
                         <input type="text" class="form-control" id="Description" placeholder="Description" name="description">
                         <label for="Description">Description</label>
                     </div>
-            </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </div>
+            </form>
       </div>
     </div>
   </div>
