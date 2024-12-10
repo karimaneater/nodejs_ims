@@ -12,7 +12,7 @@
 <body>
     <div class="container-fluid">
         <div class="container mt-5">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
                 <label for=""><h3>Inventory Management System</h3></label>
                 <span><button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">Add Item</button></span>
             </div>
@@ -53,11 +53,12 @@
                         <tr>
                             <td><%- item.name %></td>
                             <td><%- item.category %></td>
-                            <td><%- item.quantity %></td>
-                            <td>&#8369; <%- item.price %></td>
+                            <td width="5%"><%- item.quantity %></td>
+                            <td width="5%">&#8369; <%- item.price %></td>
                             <td><%- item.description %></td>
                             <td><%- item.createdAt.toDateString() %></td>
                             <td>
+                                <button data-bs-toggle="modal" data-bs-target="#viewModal-<%- item.id %>" class="btn btn-sm btn-success">View</button>
                                 <button data-bs-toggle="modal" data-bs-target="#editModal-<%- item.id %>" class="btn btn-sm btn-primary">Edit</button>
                                 <button data-bs-toggle="modal" data-bs-target="#deleteModal-<%- item.id %>" class="btn btn-sm btn-danger">Delete</button>
                                
@@ -66,9 +67,10 @@
                        
                         <!-- Delete Modal  -->
                         <%- include('deleteModal.ejs', { item }) %> 
-                          <!-- Edit Modal  -->
+                        <!-- Edit Modal  -->
                         <%- include('editModal.ejs', { item }) %> 
-                         
+                        <!-- View Modal  -->
+                        <%- include('viewModal.ejs', { item }) %> 
                     <% }) %>
                 </tbody>
                 </table>
